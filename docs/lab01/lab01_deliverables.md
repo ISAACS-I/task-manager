@@ -64,11 +64,11 @@ Key:
 
 - **Medium: **A functional issue with a temporary workaround available.
 
-- ![](media/image1.png){width="7.659574584426947in"
+- ![](docs/lab01/media/media/image1.png){width="7.659574584426947in"
   height="1.7340277777777777in"}**Low: **A minor issue with little or no
   impact on functionality.
 
-![](media/image2.png){width="6.268055555555556in"
+![](docs/lab01/media/media/image2.png){width="6.268055555555556in"
 height="2.877083333333333in"}
 
 The existing test suite was executed using pytest. A total of six tests
