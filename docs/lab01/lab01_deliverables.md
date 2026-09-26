@@ -1,75 +1,24 @@
-  ---------------------------------------------------------------------------
-  ID           File          Line         Description           Suspected
-                                                                Severity
-  ------------ ------------- ------------ --------------------- -------------
-  01           Tasks.py      48           get_pending_tasks()   Major
-                                          starts at index 1     
-                                          instead of index 0    
-                                          causing the first     
-                                          task to be skipped    
+| ID | File | Line | Description | Suspected Severity |
+|---|---|---:|---|---|
+| 01 | Tasks.py | 48 | `get_pending_tasks()` starts at index 1 instead of index 0, causing the first task to be skipped. | Major |
+| 02 | Tasks.py | 59 | `average_priority()` divides by the number of tasks without checking if the list is empty, which can cause a `ZeroDivisionError`. | Medium |
+| 03 | Tasks.py | 26 | IDs are generated using `len(tasks) + 1`. If a task is deleted, a new task could receive an ID that already exists. | Major |
+| 04 | Storage.py | 4 | An API key is hard-coded in the source code. | Low |
+| 05 | Tasks.py | 11–13 | The task file is opened but never closed. | Low |
+| 06 | Storage.py | 26 | The title filter is directly inserted into the SQL query, creating a potential SQL injection vulnerability. | Major |
+| 07 | Tasks.py | 23 | `add_task()` uses a mutable list as the default value for `tags`, which can cause the same list to be shared between multiple function calls. | Medium |
+| 08 | Storage.py | 11 | The task ID is concatenated with strings, which can cause a type error. | Major |
 
-  02           Tasks.py      59           average_priority()    Medium
-                                          divides by the number 
-                                          of tasks without      
-                                          checking if the list  
-                                          is empty              
-                                          (ZeroDivisionError)   
+### Key
 
-  03           Tasks.py      26           IDs are generated     Major
-                                          using len(tasks) + 1  
-                                          and if a task is      
-                                          deleted a new task    
-                                          could receive an ID   
-                                          that already exists   
+- **Critical:** System crash or complete failure; further testing cannot continue.
+- **Major:** A major feature fails, but the rest of the application remains usable.
+- **Medium:** A functional issue with a temporary workaround available.
+- **Low:** A minor issue with little or no impact on functionality.
 
-  04           Storage.py    4            An API key is hard    Low
-                                          coded in the source   
-                                          code                  
+![Image](media/image1.png) 
 
-  05           Tasks.py      11-13        The task file is      Low
-                                          opened but never      
-                                          closed                
-
-  06           Storage.py    26           The title filter is   Major
-                                          directly inserted     
-                                          into the SQL query    
-                                          (potential SQL        
-                                          injection             
-                                          vulnerability)        
-
-  07           Tasks.py      23           add_task() uses a     Medium
-                                          mutable list as the   
-                                          default value for     
-                                          tags which can cause  
-                                          the same list to be   
-                                          shared between        
-                                          multiple function     
-                                          calls                 
-
-  08           Storage.py    11           The task ID is        Major
-                                          concatenated with     
-                                          strings which can     
-                                          cause a type error.   
-  ---------------------------------------------------------------------------
-
-Key:
-
-- **Critical: **System crash or complete failure; further testing cannot
-  continue.
-
-<!-- -->
-
-- **Major: **A major feature fails, but the rest of the application
-  remains usable.
-
-- **Medium: **A functional issue with a temporary workaround available.
-
-- ![](docs/lab01/media/media/image1.png){width="7.659574584426947in"
-  height="1.7340277777777777in"}**Low: **A minor issue with little or no
-  impact on functionality.
-
-![](docs/lab01/media/media/image2.png){width="6.268055555555556in"
-height="2.877083333333333in"}
+![Image](media/image2.png)
 
 The existing test suite was executed using pytest. A total of six tests
 were collected with four tests passing and two tests failing.
@@ -81,7 +30,7 @@ The failures:
 - average_priority() where a division-by-zero error occurs when
   average_priority() is called with an empty list.
 
-Reflection
+### Reflection
 
 Some of the defects identified during manual inspection would likely be
 detected quickly by automated tests while others would require careful
