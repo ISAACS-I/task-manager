@@ -3,7 +3,7 @@
 **Student:** Isago Isaacs
 **ID:** 23018697
 
-This repository contains my work for Labs 1–6 of COMP 441. The instructor-provided sample project lives at the root (`app/`, `tests/`, config files), and per-lab written deliverables are organised under `docs/labXX/`.
+This repository contains my work for Labs 1-6. The instructor-provided sample project lives at the root (`app/`, `tests/`, config files), and per-lab written deliverables are organised under `docs/labXX/`.
 
 ## Lab Index
 
