@@ -120,82 +120,27 @@ F 16:0 days_until_due - A (1)
 
 F 24:0 build_query - A (1)
 
-  ---------------------------------------------------------------------------------
-  \#      File       Line      Code     Finding        Severity   Fix      Status
-                                                                  Effort   
-  ------- ---------- --------- -------- -------------- ---------- -------- --------
-  1       tasks.py   11        W1514    File opened    Low        Low      Open
-                                        without                            
-                                        specifying                         
-                                        encoding                           
-
-  2       tasks.py   11        R1732    Should use     Low        Low      Fixed
-                                        with for file                      
-                                        operations                         
-
-  3       tasks.py   19        W1514    File opened    Low        Low      Open
-                                        without                            
-                                        specifying                         
-                                        encoding                           
-
-  4       tasks.py   23        W0102    Dangerous      Medium     Low      Fixed
-                                        mutable                            
-                                        default                            
-                                        argument                           
-
-  5       tasks.py   62        R1710    Inconsistent   Medium     Low      Fixed
-                                        return                             
-                                        statements                         
-
-  6       tasks.py   71        C0200    Could use      Low        Low      Open
-                                        enumerate()                        
-
-  7       tasks.py   79        R1705    Unnecessary    Low        Low      Open
-                                        else after                         
-                                        return                             
-
-  8       tasks.py   79        C0121    Unnecessary    Low        Low      Open
-                                        comparison                         
-                                        with True                          
-
-  9       cli.py     6         C0116    Missing        Low        Low      Open
-                                        function                           
-                                        docstring                          
-
-  10      cli.py     2         W0611    Unused         Low        Low      Open
-                                        save_tasks                         
-                                        import                             
-  ---------------------------------------------------------------------------------
-
 Table 1: Triage table for ten findings and a diff/patch
-
-+---------------+--------------------------------+-----------------------+
-| > Perspective | > What it Caught               | > What it Missed      |
-+===============+================================+=======================+
-| > Linter      | Syntax & anti-patterns (W0102, | Logic flaws (fragile  |
-|               | R1710)                         | len() IDs)            |
-|               |                                |                       |
-|               | Precise file line locations.   | Usability bugs        |
-|               |                                | (case-sensitivity     |
-|               |                                | issues)               |
-|               |                                |                       |
-|               |                                | Missing validation    |
-|               |                                | (empty text or bad    |
-|               |                                | ranges)               |
-+---------------+--------------------------------+-----------------------+
-| > AI          | Core bugs (mutable defaults,   | Automated consistency |
-| > Assistant   | implicit returns)              | (doesn\'t generate    |
-|               |                                | strict tool codes     |
-|               | Contextual code review         | like W0102            |
-|               | (fragile ID systems)           | out-of-the-box)       |
-|               |                                |                       |
-|               | Edge-case detection (handling  |                       |
-|               | duplicates, casing)            |                       |
-+---------------+--------------------------------+-----------------------+
+|  # | File       | Line | Code  | Finding                                 | Severity | Fix Effort | Status |
+| -: | ---------- | ---: | ----- | --------------------------------------- | -------- | ---------- | ------ |
+|  1 | `tasks.py` |   11 | W1514 | File opened without specifying encoding | Low      | Low        | Open   |
+|  2 | `tasks.py` |   11 | R1732 | Should use `with` for file operations   | Low      | Low        | Fixed  |
+|  3 | `tasks.py` |   19 | W1514 | File opened without specifying encoding | Low      | Low        | Open   |
+|  4 | `tasks.py` |   23 | W0102 | Dangerous mutable default argument      | Medium   | Low        | Fixed  |
+|  5 | `tasks.py` |   62 | R1710 | Inconsistent return statements          | Medium   | Low        | Fixed  |
+|  6 | `tasks.py` |   71 | C0200 | Could use `enumerate()`                 | Low      | Low        | Open   |
+|  7 | `tasks.py` |   79 | R1705 | Unnecessary `else` after `return`       | Low      | Low        | Open   |
+|  8 | `tasks.py` |   79 | C0121 | Unnecessary comparison with `True`      | Low      | Low        | Open   |
+|  9 | `cli.py`   |    6 | C0116 | Missing function docstring              | Low      | Low        | Open   |
+| 10 | `cli.py`   |    2 | W0611 | Unused `save_tasks` import              | Low      | Low        | Open   |
 
 Table 2: Comparison between linter findings and AI code-review
+| Perspective      | What it Caught                                                                                                                                  | What it Missed                                                                                                              |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Linter**       | Syntax & anti-patterns (`W0102`, `R1710`); precise file line locations.                                                                         | Logic flaws (fragile `len()` IDs); usability bugs (case-sensitivity issues); missing validation (empty text or bad ranges). |
+| **AI Assistant** | Core bugs (mutable defaults, implicit returns); contextual code review (fragile ID systems); edge-case detection (handling duplicates, casing). | Automated consistency (doesn't generate strict tool codes like `W0102` out-of-the-box).                                     
 
-Reflection
+### Reflection
 
 The AI assistant is great at finding deep logic errors, complex
 multi-step problems and subtle security flaws that require understanding
