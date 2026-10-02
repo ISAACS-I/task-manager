@@ -1,8 +1,6 @@
-# Lab 3
-
 ## Equivalence Partition Table
 
-**Target function:** `calculate_discount(price, is_premium)` in `app/tasks.py`
+Target function: calculate_discount(price, is_premium) in app/tasks.py
 
 **Function under test:**
 
@@ -39,7 +37,7 @@ def calculate_discount(price, is_premium):
 
 ## Boundary Value Table
 
-**Target function:** `calculate_discount(price, is_premium)`
+Target function: calculate_discount(price, is_premium)
 
 ### Variable: price
 
